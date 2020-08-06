@@ -1,0 +1,48 @@
+
+table {
+    width: 100%;
+  }
+  
+  tr.detail-row {
+    height: 0;
+  }
+  
+  tr.account-row:not(.expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.account-row:not(.expanded-row):active {
+    background: #efefef;
+  }
+  
+  .account-row td {
+    border-bottom-width: 0;
+  }
+  
+  .account-detail {
+    overflow: hidden;
+    display: flex;
+  }
+/*   
+  .account-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  } */
+  
+  .account-accountName {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+  }
+  
+  .account-employeeId {
+    padding: 16px;
+  }
+  
+  .account-amounts {
+    opacity: 0.5;
+  }
