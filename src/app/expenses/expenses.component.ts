@@ -8,8 +8,8 @@ interface EmpAccount{
   accountId?: string;
   accountName?: string;
   employeeId?: string;
-  employeeName?: string[];
-  amounts: number[];
+  employeeName?: {name: string, amounts: number[]}[];
+  // amounts: number[];
   accountTotal?: number;
 }
 
@@ -42,55 +42,84 @@ export class ExpensesComponent implements OnInit {
       data => {
         for(const acc in data){
           const account = this.accountList.findIndex(account => account.accountId === data[acc].accountId)
-          // const employ = this.accountList[account].employeeName.findIndex(employ => employ === data[acc].employeeName)
-          // console.log(account)  
-          if (this.accountList[account]){
-              // console.log(this.accountList[account])
-              // console.log(typeof(this.accountList[account].amounts))
-              this.accountList[account].amounts.push(data[acc].amount)
+          // for (const employName in this.accountList[acc].employeeName){
+            // console.log(this.accountList[account].employeeName[0].name)
+            // const empName = this.accountList[acc].employeeName.findIndex(employName => employName.name === data[acc].employeeName)
+            // console.log(empName);
+          // }
+          if(!data[acc].employeeName){
+            data[acc].employeeName = 'N/A'
+          }
+          if (this.accountList[account]){ 
+
+            
+              const matching = this.accountList[account].employeeName.findIndex(name => name.name === data[acc].employeeName);
            
-                if( data[acc].employeeName ){
-                  this.accountList[account].employeeName.push(data[acc].employeeName)
-                  // console.log(this.accountList[account].amounts[num])
-                }
-                else{
-                  this.accountList[account].employeeName.push('N/A');
-                }
-                  this.accountList[account].accountTotal += data[acc].amount;  
-              
+              if ( matching >= 0){
+              this.accountList[account].employeeName[matching].amounts.push(data[acc].amount);          
+              }else{
+              this.accountList[account].employeeName.push({name: data[acc].employeeName, amounts: [data[acc].amount]});          
+              }    
+              this.accountList[account].accountTotal += data[acc].amount;  
+                          
           }else{
-            // if(data[acc].employeeName){
               this.accountList.push(
                   {
                     accountId: data[acc].accountId,
                     accountName: data[acc].accountName,
                     employeeId: data[acc].employeeId,
-                    employeeName: [data[acc].employeeName],
-                    amounts: [data[acc].amount],
+                    employeeName: [{name: data[acc].employeeName, amounts: [data[acc].amount]}],
+                    // amounts: [data[acc].amount],
                     accountTotal: data[acc].amount
                   }
               )
-            // }else{
-            //   this.accountList.push(
-            //     {
-            //       accountId: data[acc].accountId,
-            //       accountName: data[acc].accountName,
-            //       employeeId: data[acc].employeeId,
-            //       employeeName: ['N/A'],
-            //       amounts: [data[acc].amount],
-            //       accountTotal: data[acc].amount
+            }
+            // for(let account in this.accountList){
+            //   let nameDouble = []
+            //   for(let name in this.accountList[account].employeeName){
+            //     if(!this.accountList[account].employeeName[name].name) {
+            //       this.accountList[account].employeeName[name].name = 'N/A' ;
             //     }
-              // )
+            //   }
             // }
+            this.dataSource = this.accountList;
           }
-        this.dataSource = this.accountList;
-        // for(const acc in this.accountList){
-        //   console.log(this.accountList[1].employeeId);
-        // }
-       
-        // this.table.renderRows();
         }
+        )
       }
-    )
-  }
-}
+    }
+    
+    
+    
+    
+    
+    
+    // const nameDoubleIndex = this.accountList[account].employeeName.indexOf(this.accountList[account].employeeName[name], +name + 1);
+    // if(nameDoubleIndex >= 0 ){
+      //   nameDouble.push(nameDoubleIndex);
+      // }
+      
+      // for(const name in nameDouble){
+        //   this.accountList[account].employeeName[name] = null;
+        // }
+        
+        // console.log(this.accountList)
+  
+  // for(const acc in this.accountList){
+    //   console.log(this.accountList[1].employeeId);
+    // }
+    
+    // this.table.renderRows();
+
+    // }else{
+    //   this.accountList.push(
+    //     {
+    //       accountId: data[acc].accountId,
+    //       accountName: data[acc].accountName,
+    //       employeeId: data[acc].employeeId,
+    //       employeeName: ['N/A'],
+    //       amounts: [data[acc].amount],
+    //       accountTotal: data[acc].amount
+    //     }
+      // )
+    // }

@@ -18,11 +18,11 @@
             <div 
               class="account-employeeName" 
               *ngFor="let emp of account.employeeName let i = index"
-              ><strong> Employee Name: </strong>  {{emp}}  
+              ><strong> Employee Name: </strong>  {{emp.name}}  
               <div 
-                class="account-amounts" 
-                *ngFor="let amount of account.amounts let i = index" 
-              ><span *ngIf="account.employeeName[i] === emp">{{amount}}</span>
+                class="account-amount" 
+                *ngFor="let amount of emp.amounts let j = index" 
+              ><span >{{amount}}</span>
             </div>
           </div>
             </div>
