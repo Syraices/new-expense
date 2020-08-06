@@ -1,5 +1,3 @@
-<!-- <p *ngFor="let acc of accountList">{{acc.accountId}}, {{acc.accountName}}, {{acc.amounts}}</p> -->
-
 <table 
   mat-table 
   [dataSource]="dataSource" multiTemplateDataRows 
@@ -18,14 +16,14 @@
             <div 
               class="account-employeeName" 
               *ngFor="let emp of account.employeeName let i = index"
-              ><strong> Employee Name: </strong>  {{emp.name}}  
+              ><strong> Employee Name: </strong>{{emp.name}}  
               <div 
                 class="account-amount" 
                 *ngFor="let amount of emp.amounts let j = index" 
-              ><span >{{amount}}</span>
+              >{{amount}}
+              </div>
             </div>
           </div>
-            </div>
         </div>
       </td>
     </ng-container>
@@ -37,23 +35,7 @@
       (click)="expandedAccount = expandedAccount === account ? null : account">
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-
 </table>
 
-<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="accountName">
-      <th mat-header-cell *matHeaderCellDef> Account Name </th>
-      <td mat-cell *matCellDef="let account"> {{account.accountName}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="accountTotal">
-      <th mat-header-cell *matHeaderCellDef> Total Expenses </th>
-      <td mat-cell *matCellDef="let account"> {{account.amounts}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns:displayedColumns;" class="tableRow"></tr>
-  </table> -->
-  
   
