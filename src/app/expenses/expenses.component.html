@@ -1,3 +1,16 @@
+<div style="text-align: center; margin-bottom: 50px;">
+  <h1>Employee Expenses</h1>
+</div>
+
+<mat-form-field appearance="fill">
+  <mat-label>Employees</mat-label>
+  <mat-select matInput #input (selectionChange)="applyFilter(input)">
+    <mat-option  *ngFor="let emp of employees" [value]="employees">
+      {{emp}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <table 
   mat-table 
   [dataSource]="dataSource" multiTemplateDataRows 

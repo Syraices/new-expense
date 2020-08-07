@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    LayoutModule
+    LayoutModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
