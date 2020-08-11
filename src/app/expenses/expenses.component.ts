@@ -101,6 +101,7 @@ export class ExpensesComponent implements OnInit {
           }
           )
         }else{
+
           this.dataSource = filtered;
         }
         }
