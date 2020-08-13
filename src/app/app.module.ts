@@ -9,11 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatSelectModule} from '@angular/material/select';
+import { EditComponent } from './edit/edit.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    EditComponent
   ],
   imports: [
     HttpClientModule,
@@ -22,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatTableModule,
     LayoutModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

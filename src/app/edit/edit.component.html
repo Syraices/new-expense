@@ -1,0 +1,108 @@
+<section class="formContainer">
+  <form style="margin-top: 20px;" fxLayout="column" fxLayoutAlign="center center" #edited="ngForm" (ngSubmit)="onSubmit(edited)">
+    <mat-form-field appearance="fill">
+      <mat-label for="id">ID</mat-label>
+      <input
+        type="text"
+        matInput
+<!--        [disabled]="onEdit"-->
+<!--        [ngModel]="onEdit ? empEdit.id : empEdit"-->
+        name="id"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+      <mat-label for="name">Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Your Name"
+<!--        [ngModel]="onEdit ? empEdit.name : empEdit"-->
+        name="name"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="email">email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Your Email Address"
+<!--        [ngModel]="onEdit ? empEdit.email : empEdit"-->
+        name="email"
+        email
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="address">Address</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Street Address"
+<!--        [ngModel]="onEdit ? empEdit.address.address : empEdit"-->
+        name="address"
+        required
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label for="city">City</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="City"
+<!--        [ngModel]="onEdit ? empEdit.address.city : empEdit"-->
+        name="city"
+        required
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label for="state">State</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="State"
+<!--        [ngModel]="onEdit ? empEdit.address.state : empEdit"-->
+        name="state"
+        required
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label for="zipcode">Zipcode</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Zipcode"
+<!--        [ngModel]="onEdit ? empEdit.address.zipcode : empEdit"-->
+        name="zipcode"
+        required
+        minlength="5"
+        maxlength="5"
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label for="ssn">SSN</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="SSN"
+<!--        [ngModel]-->
+        name="ssn"
+        required
+        minlength="9"
+        maxlength="9"
+      />
+    </mat-form-field>
+    <br>
+    <button
+      mat-raised-button color primary
+      type="submit"
+      [disabled]="!edited.valid"
+    >Submit
+    </button>
+  </form>
+</section>

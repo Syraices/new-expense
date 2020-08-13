@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import { MatSelectChange } from '@angular/material/select';
+import {Component, OnInit, ComponentFactoryResolver} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {MatSelectChange} from '@angular/material/select';
+import * as _ from 'lodash';
+import {map, shareReplay} from 'rxjs/operators';
 
-interface EmpAccount{
-  accountId?: string;
-  accountName?: string;
-  employeeId?: string;
-  employeeName?: {name: string, amounts: number[]}[];
-  
+interface EmpAccount {
+  accountId: string;
+  accountName: string;
+  employeeId?: string[];
+  employeeName?: string[];
+  amount?: number[];
   accountTotal?: number;
 }
 
@@ -20,89 +28,92 @@ interface EmpAccount{
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
       state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
     ]),
   ],
 })
 export class ExpensesComponent implements OnInit {
-  employees: string[] = [];
-  accountList: EmpAccount[] = [];
-  displayedColumns: string[] = [
-    'accountName', 'accountTotal'
-  ];
-  dataSource: EmpAccount[] = [];
-  expandedAccount: EmpAccount | null;
-  
-  constructor(private httpClient: HttpClient) { }
-  
+  public filteredList: EmpAccount[] = [];
+  private accountList: EmpAccount[] = [];
+  public employees: string[] = [];
+  public displayedColumns = ['accountName', 'accountTotal'];
+  public dataSource: EmpAccount[] = [];
+  public expandedAccount: EmpAccount | null;
+
+  constructor(private httpClient: HttpClient) {
+  }
+
   ngOnInit(): void {
-    this.startTable()
-  }
+    this.httpClient
+      .get<object[]>('assets/data.json')
+      .pipe(
+        map((account) => {
+          // const empList: EmpAccount[] = [];
+          return account.map((acc: EmpAccount) => {
+            return _.pick(acc, ['accountId', 'accountName', 'amount']);
+          });
+          // account.map((acc) => {
+          //   const b = _.pick(acc, ['accountId', 'accountName', 'employeeId', 'employeeName', 'amount']);
+          //   const a = _.findIndex(empList, {accountName: b.accountName});
+          //   this.employees.push(b.employeeName);
+          //   if (a < 0) {
+          //     // tslint:disable-next-line:max-line-length
+          //     empList.push({accountId: b.accountId, accountName: b.accountName, employeeId: [b.employeeId], employeeName: [b.employeeName], amount: [b.amount]});
+          //   } else {
+          //     empList[a] = this.merger(empList[a], b);
+          //   }
+          // });
+          // this.accountList = empList;
+          // this.accountList.map(acc => {
+          //   acc.accountTotal = _.sum(acc.amount);
+          // });
+          // this.employees = _.pick(this.accountList, 'employeeName');
+          // console.log(this.employees);
+          // // this.employees = _.uniq(this.employees.sort());
+          // this.dataSource = this.accountList;
+        }),
+        shareReplay()
+      )
+      .subscribe(account => {
+          const list = _.uniqBy(account, 'accountId');
+          const list2 = list.map(acc => {
+            const list3 = _.filter(account, {accountName: acc.accountName});
 
-  applyFilter(input){
-    const filterValue = input.value[input._keyManager._activeItemIndex];
-    const filtered = []
-    for(let acc in this.accountList){
-      for(let name in this.accountList[acc].employeeName){
-
-        if (this.accountList[acc].employeeName[name].name == filterValue){
-          const account = this.accountList[acc];
-          filtered.push({
-            accountId: account.accountId,
-            accountName: account.accountName,
-            employeeId: account.employeeId,
-            employeeName: [{name: account.employeeName[name].name, amounts: account.employeeName[name].amounts }]
-          })
-        }
-      }
-    }
-    this.startTable(filtered)
-  }
-
-  startTable(filtered?){
-    if(!filtered){
-    this.httpClient.get('assets/data.json')
-    .subscribe(
-      data => {
-        for(const acc in data){
-          const account = this.accountList.findIndex(account => account.accountId === data[acc].accountId)
-          
-
-            if(!data[acc].employeeName){
-              data[acc].employeeName = 'N/A'
-            }
-            if(!this.employees.includes(data[acc].employeeName)){
-              this.employees.push(data[acc].employeeName)      
-            }
-            if (this.accountList[account]){       
-              const matching = this.accountList[account].employeeName.findIndex(name => name.name === data[acc].employeeName);
-              
-              if ( matching >= 0){
-                this.accountList[account].employeeName[matching].amounts.push(data[acc].amount);    
-              }else{
-                this.accountList[account].employeeName.push({name: data[acc].employeeName, amounts: [data[acc].amount]});    
-                
-              }    
-              this.accountList[account].accountTotal += data[acc].amount;             
-            }else{
-              
-              this.accountList.push(
-                {
-                  accountId: data[acc].accountId,
-                  accountName: data[acc].accountName,
-                  employeeId: data[acc].employeeId,
-                  employeeName: [{name: data[acc].employeeName, amounts: [data[acc].amount]}],
-                  accountTotal: data[acc].amount
-                }
-                )
-                this.dataSource = this.accountList;
+            function cust(ov, os) {
+              if (_.isArray(ov)) {
+                ov.concat(os);
               }
             }
-          }
-          )
-        }else{
+            const list4 = _.mergeWith(acc, list3, cust);
+            console.log(list4);
+            return acc;
+          });
+        }
+      );
+  }
 
-          this.dataSource = filtered;
-        }
-        }
+  createList(account) {
+
+  }
+
+  applyFilter(input) {
+    this.dataSource = this.accountList;
+    this.filteredList = _.filter(this.dataSource, {employeeName: [input.value]});
+    console.log(this.filteredList);
+    this.dataSource = this.filteredList;
+  }
+
+  merger(arr1, arr2) {
+    function cust(oV, sV) {
+      if (_.isArray(oV)) {
+        return oV.concat(sV);
+      }
+    }
+
+    return _.mergeWith(arr1, arr2, cust);
+  }
 }
+

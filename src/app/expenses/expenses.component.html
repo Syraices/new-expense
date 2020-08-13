@@ -4,43 +4,38 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Employees</mat-label>
-  <mat-select matInput #input (selectionChange)="applyFilter(input)">
-    <mat-option  *ngFor="let emp of employees" [value]="employees">
-      {{emp}}
+  <mat-select matInput (selectionChange)="applyFilter($event)">
+    <mat-option  *ngFor="let emp of employees" [value]='emp'>
+      {{emp ? emp : 'N/A'}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
-<table 
-  mat-table 
-  [dataSource]="dataSource" multiTemplateDataRows 
+<table
+  mat-table
+  [dataSource]="dataSource" multiTemplateDataRows
   class="mat-elevation-z8">
 
     <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
         <th mat-header-cell *matHeaderCellDef>{{column}}</th>
         <td mat-cell *matCellDef="let account">{{account[column]}}</td>
     </ng-container>
-    
+
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let account" [attr.colspan]="displayedColumns.length">
         <div class="account-detail"
              [@detailExpand]="account == expandedAccount ? 'expanded' : 'collapsed'">
           <div class="account-diagram">
-            <div 
-              class="account-employeeName" 
+            <div
+              class="account-employeeName"
               *ngFor="let emp of account.employeeName let i = index"
-              ><strong> Employee Name: </strong>{{emp.name}}  
-              <div 
-                class="account-amount" 
-                *ngFor="let amount of emp.amounts let j = index" 
-              >{{amount}}
-              </div>
+            ><strong>{{emp ? emp : 'N/A'}}  </strong> <span>{{account.amount[i]}}</span>
             </div>
           </div>
         </div>
       </td>
     </ng-container>
-    
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let account; columns: displayedColumns;"
       class="account-row"
@@ -51,4 +46,3 @@
 </table>
 
 
-  
