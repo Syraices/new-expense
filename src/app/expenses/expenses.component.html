@@ -6,7 +6,7 @@
   <mat-label>Employees</mat-label>
   <mat-select matInput (selectionChange)="applyFilter($event)">
     <mat-option  *ngFor="let emp of employees" [value]='emp'>
-      {{emp ? emp : 'N/A'}}
+      {{emp}}
     </mat-option>
   </mat-select>
 </mat-form-field>
@@ -29,7 +29,8 @@
             <div
               class="account-employeeName"
               *ngFor="let emp of account.employeeName let i = index"
-            ><strong>{{emp ? emp : 'N/A'}}  </strong> <span>{{account.amount[i]}}</span>
+              routerLink="{{account.employeeId[i]}}"
+            ><strong>{{emp}}  </strong> <span>{{account.amount[i] | currency }}</span>
             </div>
           </div>
         </div>
@@ -42,7 +43,7 @@
       [class.expanded-row]="expandedAccount === account"
       (click)="expandedAccount = expandedAccount === account ? null : account">
     </tr>
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+    <tr mat-row *matRowDef="let myRowData; let row; columns: ['expandedDetail']" class="detail-row" ></tr>
 </table>
 
 

@@ -1,45 +1,45 @@
-<section class="formContainer">
-  <form style="margin-top: 20px;" fxLayout="column" fxLayoutAlign="center center" #edited="ngForm" (ngSubmit)="onSubmit(edited)">
-    <mat-form-field appearance="fill">
-      <mat-label for="id">Employee ID</mat-label>
-      <input
-        type="text"
-        matInput
-        [ngModel]=""
-        name="id"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill" >
-      <mat-label for="name">Employee Name</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="Name"
-        [ngModel]=""
-        name="name"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="email">Employee Email</mat-label>
-      <input
-        type="email"
-        matInput
-        placeholder="Email Address"
-        [ngModel]=""
-        name="email"
-        email
-        required
-      />
-    </mat-form-field>
-    <br>
-    <button
-      mat-raised-button color primary
-      type="submit"
-      [disabled]="!edited.valid"
-    >Submit
-    </button>
-    <button mat-raised-button color alert (click)="onDelete()">Delete</button>
-  </form>
-</section>
+<!--<section class="formContainer">-->
+<!--  <form style="margin-top: 20px;" fxLayout="column" fxLayoutAlign="center center" #edited="ngForm" (ngSubmit)="onSubmit(edited)">-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label for="id">Employee ID</mat-label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        matInput-->
+<!--        [ngModel]=""-->
+<!--        name="id"-->
+<!--        required-->
+<!--      />-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field appearance="fill" >-->
+<!--      <mat-label for="name">Employee Name</mat-label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        matInput-->
+<!--        placeholder="Name"-->
+<!--        [ngModel]=""-->
+<!--        name="name"-->
+<!--        required-->
+<!--      />-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label for="email">Employee Email</mat-label>-->
+<!--      <input-->
+<!--        type="email"-->
+<!--        matInput-->
+<!--        placeholder="Email Address"-->
+<!--        [ngModel]=""-->
+<!--        name="email"-->
+<!--        email-->
+<!--        required-->
+<!--      />-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <button-->
+<!--      mat-raised-button color primary-->
+<!--      type="submit"-->
+<!--      [disabled]="!edited.valid"-->
+<!--    >Submit-->
+<!--    </button>-->
+<!--    <button mat-raised-button color alert (click)="onDelete()">Delete</button>-->
+<!--  </form>-->
+<!--</section>-->

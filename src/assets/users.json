@@ -1,1 +1,239 @@
-[{"id":"c20c44e5-e591-43a3-b190-2cc88fcaa22a","email":"aryehmbendet@gmail.com","displayName":"ב״ה","lastLogin":"2020-08-03T15:21:51.3365899-04:00","isSuperAdmin":true,"status":"Active","companies":[],"userGroups":[{"id":"9351c323-25e4-4921-9a45-14214714ca69","name":"Global Administrator","icon":null}]},{"id":"3509fb6a-ca5a-4abc-8f24-9b44a7001f92","email":"emailsample351@gmail.com","displayName":"jack handy","lastLogin":"2020-04-26T18:09:57.305054-04:00","isSuperAdmin":false,"status":"Active","companies":[],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]},{"id":"64769a8d-116f-466d-bda1-9f4235bf5cac","email":"jgoldberg@lawfirmmatrix.com","authProvider":"Google","displayName":"Joel Goldberg","lastLogin":"2020-08-10T05:59:04.675094-04:00","isSuperAdmin":true,"status":"Active","companies":[],"userGroups":[{"id":"9351c323-25e4-4921-9a45-14214714ca69","name":"Global Administrator","icon":null}]},{"id":"349113f0-cd91-4c3d-a096-d3aac5e2b693","email":"joel.goldberg14@gmail.com","displayName":"Joey TestUser","lastLogin":"2020-08-01T04:43:17.0247137-04:00","isSuperAdmin":false,"status":"Active","companies":[],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]},{"id":"bd80fa01-0eb0-4f77-a428-5b31fb4e852a","email":"lfmxemail@gmail.com","displayName":"bob hand","lastLogin":"2020-05-14T15:20:17.441831-04:00","isSuperAdmin":false,"status":"Active","companies":[],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]},{"id":"f7609d8e-0a6b-4d9a-ba71-91b410c449dd","email":"m@lfmx.co","displayName":"Motti","isSuperAdmin":false,"status":"Invited","companies":[{"id":"33acf1e8-c0b2-4257-b4c5-00e45bf60b0f","name":"LBSMX","userGroups":[{"id":"f4c82504-98b4-484d-9090-07386bd1ee3d","name":"Time Tracker","icon":"alarm"},{"id":"6ff1a784-2a8a-42fd-9026-1e7f857b1bd5","name":"Company Administrator","icon":"all_inclusive"},{"id":"b13299eb-afa4-48e5-b32d-5926baca0b5e","name":"Cash Analyst","icon":"monetization_on"},{"id":"5808fd89-ebe8-4659-a0a5-624e8f1c9e84","name":"Project Manager","icon":"folder_shared"},{"id":"94e3148f-d4cb-417e-abb0-c4d63d3ba65d","name":"Employee Manager","icon":"supervisor_account"}]}],"userGroups":[]},{"id":"72410ba2-4bdd-4076-a59b-ae23c6284a46","email":"mendy@lawfirmbookkeeper.com","authProvider":"Google","displayName":"Mendy Rauh","lastLogin":"2020-05-11T14:41:29.1168337-04:00","isSuperAdmin":true,"status":"Active","companies":[],"userGroups":[{"id":"9351c323-25e4-4921-9a45-14214714ca69","name":"Global Administrator","icon":null}]},{"id":"5ae1aafd-87c0-4359-879b-48f2f0c06a74","email":"motti@caig.co","displayName":"Motti","lastLogin":"2020-03-09T16:40:36.1796268-04:00","isSuperAdmin":false,"status":"Active","companies":[{"id":"429763e1-302f-42fb-bb46-0382e8f3e4f3","name":"JAX","userGroups":[{"id":"f4c82504-98b4-484d-9090-07386bd1ee3d","name":"Time Tracker","icon":"alarm"}]}],"userGroups":[]},{"id":"65ebb6f2-9e76-44d5-af1b-c25f59e207d5","email":"mrauh@caig.co","displayName":"Menachem Rauh","lastLogin":"2020-04-14T16:22:17.9891041-04:00","isSuperAdmin":false,"status":"Active","companies":[{"id":"488610dd-bfc2-45d2-a0ae-981697b46537","name":"LFS","userGroups":[{"id":"6ff1a784-2a8a-42fd-9026-1e7f857b1bd5","name":"Company Administrator","icon":"all_inclusive"}]}],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]},{"id":"e6938a58-d1ad-4933-a466-25cb63bf9565","email":"patryder1@gmail.com","displayName":"Pat New","lastLogin":"2020-03-02T21:23:11.78534-05:00","isSuperAdmin":false,"status":"Active","companies":[],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]},{"id":"75b91490-91a7-468b-a624-bcaddb1c174e","email":"pryder@lawfirmmatrix.com","authProvider":"Google","displayName":"Patrick Ryder","lastLogin":"2020-08-07T10:38:42.0640589-04:00","isSuperAdmin":true,"status":"Active","companies":[],"userGroups":[{"id":"9351c323-25e4-4921-9a45-14214714ca69","name":"Global Administrator","icon":null}]},{"id":"59dbdb4d-1552-49d8-979d-46d60d042423","email":"STACYBENDET@GMAIL.COM","displayName":"JACK MOSHIACH","isSuperAdmin":false,"status":"Active","companies":[],"userGroups":[{"id":"c884cc21-bde5-4023-874b-52534657e76a","name":"Company Creator","icon":null}]}]
+[
+  {
+    "id": "c20c44e5-e591-43a3-b190-2cc88fcaa22a",
+    "email": "aryehmbendet@gmail.com",
+    "displayName": "ב״ה",
+    "lastLogin": "2020-08-03T15:21:51.3365899-04:00",
+    "isSuperAdmin": true,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "9351c323-25e4-4921-9a45-14214714ca69",
+        "name": "Global Administrator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "3509fb6a-ca5a-4abc-8f24-9b44a7001f92",
+    "email": "emailsample351@gmail.com",
+    "displayName": "jack handy",
+    "lastLogin": "2020-04-26T18:09:57.305054-04:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "64769a8d-116f-466d-bda1-9f4235bf5cac",
+    "email": "jgoldberg@lawfirmmatrix.com",
+    "authProvider": "Google",
+    "displayName": "Joel Goldberg",
+    "lastLogin": "2020-08-10T05:59:04.675094-04:00",
+    "isSuperAdmin": true,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "9351c323-25e4-4921-9a45-14214714ca69",
+        "name": "Global Administrator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "349113f0-cd91-4c3d-a096-d3aac5e2b693",
+    "email": "joel.goldberg14@gmail.com",
+    "displayName": "Joey TestUser",
+    "lastLogin": "2020-08-01T04:43:17.0247137-04:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "bd80fa01-0eb0-4f77-a428-5b31fb4e852a",
+    "email": "lfmxemail@gmail.com",
+    "displayName": "bob hand",
+    "lastLogin": "2020-05-14T15:20:17.441831-04:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "f7609d8e-0a6b-4d9a-ba71-91b410c449dd",
+    "email": "m@lfmx.co",
+    "displayName": "Motti",
+    "isSuperAdmin": false,
+    "status": "Invited",
+    "companies": [
+      {
+        "id": "33acf1e8-c0b2-4257-b4c5-00e45bf60b0f",
+        "name": "LBSMX",
+        "userGroups": [
+          {
+            "id": "f4c82504-98b4-484d-9090-07386bd1ee3d",
+            "name": "Time Tracker",
+            "icon": "alarm"
+          },
+          {
+            "id": "6ff1a784-2a8a-42fd-9026-1e7f857b1bd5",
+            "name": "Company Administrator",
+            "icon": "all_inclusive"
+          },
+          {
+            "id": "b13299eb-afa4-48e5-b32d-5926baca0b5e",
+            "name": "Cash Analyst",
+            "icon": "monetization_on"
+          },
+          {
+            "id": "5808fd89-ebe8-4659-a0a5-624e8f1c9e84",
+            "name": "Project Manager",
+            "icon": "folder_shared"
+          },
+          {
+            "id": "94e3148f-d4cb-417e-abb0-c4d63d3ba65d",
+            "name": "Employee Manager",
+            "icon": "supervisor_account"
+          }
+        ]
+      }
+    ],
+    "userGroups": []
+  },
+  {
+    "id": "72410ba2-4bdd-4076-a59b-ae23c6284a46",
+    "email": "mendy@lawfirmbookkeeper.com",
+    "authProvider": "Google",
+    "displayName": "Mendy Rauh",
+    "lastLogin": "2020-05-11T14:41:29.1168337-04:00",
+    "isSuperAdmin": true,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "9351c323-25e4-4921-9a45-14214714ca69",
+        "name": "Global Administrator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "5ae1aafd-87c0-4359-879b-48f2f0c06a74",
+    "email": "motti@caig.co",
+    "displayName": "Motti",
+    "lastLogin": "2020-03-09T16:40:36.1796268-04:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [
+      {
+        "id": "429763e1-302f-42fb-bb46-0382e8f3e4f3",
+        "name": "JAX",
+        "userGroups": [
+          {
+            "id": "f4c82504-98b4-484d-9090-07386bd1ee3d",
+            "name": "Time Tracker",
+            "icon": "alarm"
+          }
+        ]
+      }
+    ],
+    "userGroups": []
+  },
+  {
+    "id": "65ebb6f2-9e76-44d5-af1b-c25f59e207d5",
+    "email": "mrauh@caig.co",
+    "displayName": "Menachem Rauh",
+    "lastLogin": "2020-04-14T16:22:17.9891041-04:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [
+      {
+        "id": "488610dd-bfc2-45d2-a0ae-981697b46537",
+        "name": "LFS",
+        "userGroups": [
+          {
+            "id": "6ff1a784-2a8a-42fd-9026-1e7f857b1bd5",
+            "name": "Company Administrator",
+            "icon": "all_inclusive"
+          }
+        ]
+      }
+    ],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "e6938a58-d1ad-4933-a466-25cb63bf9565",
+    "email": "patryder1@gmail.com",
+    "displayName": "Pat New",
+    "lastLogin": "2020-03-02T21:23:11.78534-05:00",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "75b91490-91a7-468b-a624-bcaddb1c174e",
+    "email": "pryder@lawfirmmatrix.com",
+    "authProvider": "Google",
+    "displayName": "Patrick Ryder",
+    "lastLogin": "2020-08-07T10:38:42.0640589-04:00",
+    "isSuperAdmin": true,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "9351c323-25e4-4921-9a45-14214714ca69",
+        "name": "Global Administrator",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "id": "59dbdb4d-1552-49d8-979d-46d60d042423",
+    "email": "STACYBENDET@GMAIL.COM",
+    "displayName": "JACK MOSHIACH",
+    "isSuperAdmin": false,
+    "status": "Active",
+    "companies": [],
+    "userGroups": [
+      {
+        "id": "c884cc21-bde5-4023-874b-52534657e76a",
+        "name": "Company Creator",
+        "icon": null
+      }
+    ]
+  }
+]

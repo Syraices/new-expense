@@ -36,12 +36,13 @@ interface EmpAccount {
   ],
 })
 export class ExpensesComponent implements OnInit {
-  public filteredList: EmpAccount[] = [];
+  private filteredList: EmpAccount[] = [];
   private accountList: EmpAccount[] = [];
   public employees: string[] = [];
   public displayedColumns = ['accountName', 'accountTotal'];
   public dataSource: EmpAccount[] = [];
   public expandedAccount: EmpAccount | null;
+  public filterApplied = false;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -53,67 +54,73 @@ export class ExpensesComponent implements OnInit {
         map((account) => {
           // const empList: EmpAccount[] = [];
           return account.map((acc: EmpAccount) => {
-            return _.pick(acc, ['accountId', 'accountName', 'amount']);
+            return _.pick(acc, ['accountId', 'accountName', 'employeeId', 'employeeName', 'amount']);
           });
-          // account.map((acc) => {
-          //   const b = _.pick(acc, ['accountId', 'accountName', 'employeeId', 'employeeName', 'amount']);
-          //   const a = _.findIndex(empList, {accountName: b.accountName});
-          //   this.employees.push(b.employeeName);
-          //   if (a < 0) {
-          //     // tslint:disable-next-line:max-line-length
-          //     empList.push({accountId: b.accountId, accountName: b.accountName, employeeId: [b.employeeId], employeeName: [b.employeeName], amount: [b.amount]});
-          //   } else {
-          //     empList[a] = this.merger(empList[a], b);
-          //   }
-          // });
-          // this.accountList = empList;
-          // this.accountList.map(acc => {
-          //   acc.accountTotal = _.sum(acc.amount);
-          // });
-          // this.employees = _.pick(this.accountList, 'employeeName');
-          // console.log(this.employees);
-          // // this.employees = _.uniq(this.employees.sort());
-          // this.dataSource = this.accountList;
         }),
         shareReplay()
       )
       .subscribe(account => {
-          const list = _.uniqBy(account, 'accountId');
-          const list2 = list.map(acc => {
-            const list3 = _.filter(account, {accountName: acc.accountName});
+          _.forEach(account, (o) => {
 
-            function cust(ov, os) {
-              if (_.isArray(ov)) {
-                ov.concat(os);
-              }
-            }
-            const list4 = _.mergeWith(acc, list3, cust);
-            console.log(list4);
+            o.amount = [o.amount];
+            o.employeeName = [o.employeeName];
+            o.employeeId = [o.employeeId];
+          });
+          const list = _.uniqBy(account, 'accountId');
+          this.accountList = list.map(acc => {
+            const list3 = _.filter(account, {accountName: acc.accountName});
+            _.forEach(list3, (o, k) => {
+              _.mergeWith(list3[0], list3[k + 1], (ov, os) => {
+                if (_.isArray(ov)) {
+                  return ov.concat(os);
+                }
+              });
+            });
             return acc;
           });
+          this.dataSource = this.totals(this.accountList);
+          this.dataSource = this.accountList;
         }
       );
   }
+  totals(list) {
+    this.employees = [];
+    list.map(acc => {
+      this.employees.push('All');
+      _.forEach(acc.employeeName, (o, k) => {
+        if (o === null) {
+          acc.employeeName[k] = 'N/A';
+        }
+        this.employees.push(acc.employeeName[k]);
+      });
+      acc.accountTotal = _.sum(acc.amount);
+    });
+    this.employees = _.uniq(this.employees);
 
-  createList(account) {
-
+    return list;
   }
 
   applyFilter(input) {
-    this.dataSource = this.accountList;
-    this.filteredList = _.filter(this.dataSource, {employeeName: [input.value]});
-    console.log(this.filteredList);
-    this.dataSource = this.filteredList;
-  }
-
-  merger(arr1, arr2) {
-    function cust(oV, sV) {
-      if (_.isArray(oV)) {
-        return oV.concat(sV);
-      }
+    if (input.value === 'All') {
+      this.filteredList = this.accountList;
+    }else {
+      this.filteredList = this.accountList;
+      const list = _.filter(this.filteredList, {employeeName: [input.value]});
+      this.filteredList = list.map((acc, i) => {
+        const employee: EmpAccount = {accountId: acc.accountId, accountName: acc.accountName, employeeId: [], employeeName: [], amount: []};
+        acc.employeeName.map((emp, index) => {
+          if (emp === input.value) {
+            employee.accountId = acc.accountId;
+            employee.accountName = acc.accountName;
+            employee.employeeName.push(acc.employeeName[index]);
+            employee.employeeId.push(acc.employeeId[index]);
+            employee.amount.push(acc.amount[index]);
+          }
+        });
+        return employee;
+      });
     }
+    this.dataSource = this.totals(this.filteredList);
 
-    return _.mergeWith(arr1, arr2, cust);
   }
 }
-
